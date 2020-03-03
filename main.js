@@ -1,31 +1,52 @@
-function call() {
+/******************
+ * YOUR CODE HERE *
+ ******************/
+
+
+
+
+/********************************
+ * OUR CODE HERE - DON'T TOUCH! *
+ ********************************/
+
+if (typeof call === 'undefined') {
+  call = undefined;
 }
 
-function callTwice() {
+if (typeof callTwice === 'undefined') {
+  callTwice = undefined;
 }
 
-function callXTimes() {
+if (typeof callXTimes === 'undefined') {
+  callXTimes = undefined;
 }
 
-function returnFromFunc() {
+if (typeof returnFromFunc === 'undefined') {
+  returnFromFunc = undefined;
 }
 
-function modifyString() {
+if (typeof modifyString === 'undefined') {
+  modifyString = undefined;
 }
 
-function modifyNumber() {
+if (typeof modifyNumber === 'undefined') {
+  modifyNumber = undefined;
 }
 
-function modifyAnything() {
+if (typeof modifyAnything === 'undefined') {
+  modifyAnything = undefined;
 }
 
-function twoFuncs() {
+if (typeof twoFuncs === 'undefined') {
+  twoFuncs = undefined;
 }
 
-function twoValues() {
+if (typeof twoValues === 'undefined') {
+  twoValues = undefined;
 }
 
-function twoValuesRTL() {
+if (typeof twoValuesRTL === 'undefined') {
+  twoValuesRTL = undefined;
 }
 
 
