@@ -7,11 +7,12 @@ const {
   modifyNumber,
   modifyAnything,
   twoFuncs,
+  threeFuncs,
   twoValues,
   twoValuesRTL,
 } = require('./main.js')
 
-
+console.log(threeFuncs);
 describe('call', () => {
   it(`calls the given function`, () => {
     const return5 = function() {
@@ -195,6 +196,42 @@ describe('twoFuncs', () => {
   })
 });
 
+
+describe('threeFuncs', () => {
+  it(`passes the first given function's return value to the second, then passes that return value to the third, and finally returns the result`, () => {
+    const sayHello = function() {
+      return 'hello';
+    }
+
+    const addQuestionMark = function(str) {
+      return str + '?';
+    }
+
+    const gimmeTwo = function(str) {
+      return str + str;
+    }
+
+    const return5 = function() {
+      return 5;
+    }
+
+    const add5 = function(x) {
+      return x + 5;
+    }
+
+    const return10 = function() {
+      return 10;
+    }
+
+    const add7 = function(x) {
+      return x + 7;
+    }
+
+    expect(threeFuncs(return5, add5, add7)).toEqual(17)
+    expect(threeFuncs(return10, add5, add7)).toEqual(22)
+    expect(threeFuncs(sayHello, gimmeTwo, gimmeTwo)).toEqual('hellohellohellohello')
+  })
+});
 
 describe('twoValues', () => {
   it(`runs both given values through the given function, returning the result`, () => {
