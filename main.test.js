@@ -12,7 +12,6 @@ const {
   twoValuesRTL,
 } = require('./main.js')
 
-console.log(threeFuncs);
 describe('call', () => {
   it(`calls the given function`, () => {
     const return5 = function() {
@@ -35,8 +34,7 @@ describe('callTwice', () => {
 
     const mockFunc = jest.fn(return5);
 
-    call(mockFunc);
-    call(mockFunc);
+    callTwice(mockFunc);
     expect(mockFunc.mock.calls.length).toBe(2)
   })
 });

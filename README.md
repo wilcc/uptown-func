@@ -18,7 +18,7 @@ This is a classic `npm install` and `npm test` assignment.
 ### Challenges
 
 * `call` - given a function, it calls that function.
-* `calltwice` - given a function, it calls that function twice.
+* `callTwice` - given a function, it calls that function twice.
 * `callXTimes` - given a function and a number, it calls that function that number of times.
 * `returnFromFunc` - given a function, it returns the return value from calling that function.
 * `modifyString` - given a string and a function, it passes that string in a call to that function.
