@@ -41,6 +41,10 @@ if (typeof twoFuncs === 'undefined') {
   twoFuncs = undefined;
 }
 
+if (typeof threeFuncs === 'undefined') {
+  threeFuncs = undefined;
+}
+
 if (typeof twoValues === 'undefined') {
   twoValues = undefined;
 }
