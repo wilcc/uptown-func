@@ -12,86 +12,44 @@ const {
 } = require('./main.js')
 
 
-function return5() {
-  return 5;
-}
-
-function return10() {
-  return 10;
-}
-
-function add5(x) {
-  return x + 5;
-}
-
-function add7(x) {
-  return x + 7;
-}
-
-function sayHello() {
-  return 'hello';
-}
-
-function addExclamationPoint(str) {
+const addExclamationPoint = function(str) {
   return str + '!';
 }
 
-function addQuestionMark(str) {
+const addQuestionMark = function(str) {
   return str + '?';
 }
 
-function gimmeFirstHalf(str) {
+const gimmeFirstHalf = function(str) {
   return str.length % 2 === 0
     ? str.slice(0, str.length / 2)
     : str.slice(0, str.length / 2 + 1);
 }
 
-function gimmeTwo(str) {
+const gimmeTwo = function(str) {
   return str + str;
 }
 
-function isColinAtSchool(rollCall) {
-  return rollCall.includes('Colin');
-}
-
-function colinIsAtSchool(rollCall) {
-  rollCall.push('Colin');
-}
-
-function isEven(num) {
-  return num % 2 === 0;
-}
-
-function addToStart(list, value) {
-  list.unshift(value);
-}
-
-function addToEnd(list, value) {
-  list.push(value);
-}
-
-function makeFullName(firstName, lastName) {
-  return `${firstName} ${lastName}`;
-}
-
-
-let emptyFunc;
 
 beforeEach(() => {
-  emptyFunc = jest.fn(function() {});
+  const emptyFunc = jest.fn(function() {});
 })
 
 
 describe('call', () => {
   it(`calls the given function`, () => {
-    call(emptyFunc);
-    expect(emptyFunc.mock.calls.length).toBe(1)
+  const emptyFunc = jest.fn(function() {});
+
+  call(emptyFunc);
+  expect(emptyFunc.mock.calls.length).toBe(1)
   })
 })
 
 
 describe('callTwice', () => {
   it(`calls the given function twice`, () => {
+    const emptyFunc = jest.fn(function() {});
+
     callTwice(emptyFunc);
     expect(emptyFunc.mock.calls.length).toEqual(2);
   })
@@ -100,10 +58,14 @@ describe('callTwice', () => {
 
 describe('callXTimes', () => {
   it(`calls the given function the given number of times`, () => {
+    const emptyFunc = jest.fn(function() {});
+    
     callXTimes(emptyFunc, 0);
     expect(emptyFunc.mock.calls.length).toEqual(0);
+
     callXTimes(emptyFunc, 5);
     expect(emptyFunc.mock.calls.length).toEqual(5);
+
     callXTimes(emptyFunc, 50);
     expect(emptyFunc.mock.calls.length).toEqual(55);
   })
@@ -112,6 +74,14 @@ describe('callXTimes', () => {
 
 describe('returnFromFunc', () => {
   it(`returns the return value of the function it's given`, () => {
+    const return5 = function() {
+      return 5;
+    }
+
+    const return10 = function() {
+      return 10;
+    }
+
     expect(returnFromFunc(return5)).toEqual(5);
     expect(returnFromFunc(return10)).toEqual(10);
     expect(returnFromFunc(return10)).toEqual(10);
@@ -121,6 +91,20 @@ describe('returnFromFunc', () => {
 
 describe('modifyString', () => {
   it(`modifies the given string according to the given function`, () => {
+    const addExclamationPoint = function(str) {
+      return str + '!';
+    }
+
+    const gimmeFirstHalf = function(str) {
+      return str.length % 2 === 0
+        ? str.slice(0, str.length / 2)
+        : str.slice(0, str.length / 2 + 1);
+    }
+
+    const gimmeTwo = function(str) {
+      return str + str;
+    }
+
     expect(modifyString('functional programming', addExclamationPoint)).toEqual('functional programming!');
     expect(modifyString('functional programming', gimmeFirstHalf)).toEqual('functional ');
     expect(modifyString('functional programming', gimmeTwo)).toEqual('functional programmingfunctional programming')
@@ -130,6 +114,14 @@ describe('modifyString', () => {
 
 describe('modifyNumber', () => {
   it(`modifies the given number according to the given function`, () => {
+    const add5 = function(x) {
+      return x + 5;
+    }
+
+    const add7 = function(x) {
+      return x + 7;
+    }
+
     expect(modifyNumber(5, add5)).toEqual(10);
     expect(modifyNumber(8, add7)).toEqual(15)
   })
@@ -138,6 +130,27 @@ describe('modifyNumber', () => {
 
 describe('modifyAnything', () => {
   it(`will modify the given value according to the given function no matter what type the value is`, () => {
+    const gimmeTwo = function(str) {
+      return str + str;
+    }
+
+    const addExclamationPoint = function(str) {
+      return str + '!';
+    }
+
+    const isColinAtSchool = function(rollCall) {
+      return rollCall.includes('Colin');
+    }
+
+    const isEven = function(num) {
+      return num % 2 === 0;
+    }
+
+    const colinIsAtSchool = function(rollCall) {
+      rollCall.push('Colin');
+    }
+
+
     expect(modifyAnything(5, gimmeTwo)).toEqual(10);
     expect(modifyAnything(5, addExclamationPoint)).toEqual("5!");
     expect(modifyAnything(['Mesuara', 'Colin'], isColinAtSchool)).toEqual(true);
@@ -157,6 +170,34 @@ describe('modifyAnything', () => {
 
 describe('twoFuncs', () => {
   it(`passes the first given function's return value to the second, then returns the result`, () => {
+    const sayHello = function() {
+      return 'hello';
+    }
+
+    const addQuestionMark = function(str) {
+      return str + '?';
+    }
+
+    const gimmeTwo = function(str) {
+      return str + str;
+    }
+
+    const return5 = function() {
+      return 5;
+    }
+
+    const add5 = function(x) {
+      return x + 5;
+    }
+
+    const return10 = function() {
+      return 10;
+    }
+
+    const add7 = function(x) {
+      return x + 7;
+    }
+
     expect(twoFuncs(sayHello, addQuestionMark)).toEqual('hello?')
     expect(twoFuncs(sayHello, gimmeTwo)).toEqual('hellohello')
     expect(twoFuncs(return5, add5)).toEqual(10)
@@ -168,6 +209,18 @@ describe('twoFuncs', () => {
 
 describe('twoValues', () => {
   it(`runs both given values through the given function, returning the result`, () => {
+    const addToStart = function(list, value) {
+      list.unshift(value);
+    }
+
+    const addToEnd = function(list, value) {
+      list.push(value);
+    }
+
+    const makeFullName = function(firstName, lastName) {
+      return `${firstName} ${lastName}`;
+    }
+
     const fibs = [1, 2, 3, 5, 8]
     twoValues(fibs, 1, addToStart);
     twoValues(fibs, 13, addToEnd);
@@ -179,6 +232,18 @@ describe('twoValues', () => {
 
 describe('twoValuesRTL', () => {
   it(`runs both given values through the given function in reverse order, returning the result`, () => {
+    const addToStart = function(list, value) {
+      list.unshift(value);
+    }
+
+    const addToEnd = function(list, value) {
+      list.push(value);
+    }
+
+    const makeFullName = function(firstName, lastName) {
+      return `${firstName} ${lastName}`;
+    }
+
     const fibs = [1, 2, 3, 5, 8]
     twoValuesRTL(1, fibs, addToStart);
     twoValuesRTL(13, fibs, addToEnd);
