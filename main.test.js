@@ -12,62 +12,51 @@ const {
 } = require('./main.js')
 
 
-const addExclamationPoint = function(str) {
-  return str + '!';
-}
-
-const addQuestionMark = function(str) {
-  return str + '?';
-}
-
-const gimmeFirstHalf = function(str) {
-  return str.length % 2 === 0
-    ? str.slice(0, str.length / 2)
-    : str.slice(0, str.length / 2 + 1);
-}
-
-const gimmeTwo = function(str) {
-  return str + str;
-}
-
-
-beforeEach(() => {
-  const emptyFunc = jest.fn(function() {});
-})
-
-
 describe('call', () => {
   it(`calls the given function`, () => {
-  const emptyFunc = jest.fn(function() {});
+    const return5 = function() {
+      return 5;
+    }
 
-  call(emptyFunc);
-  expect(emptyFunc.mock.calls.length).toBe(1)
+    const mockFunc = jest.fn(return5);
+
+    call(mockFunc);
+    expect(mockFunc.mock.calls.length).toBe(1)
   })
 })
 
 
 describe('callTwice', () => {
   it(`calls the given function twice`, () => {
-    const emptyFunc = jest.fn(function() {});
+    const return5 = function() {
+      return 5;
+    }
 
-    callTwice(emptyFunc);
-    expect(emptyFunc.mock.calls.length).toEqual(2);
+    const mockFunc = jest.fn(return5);
+
+    call(mockFunc);
+    call(mockFunc);
+    expect(mockFunc.mock.calls.length).toBe(2)
   })
 });
 
 
 describe('callXTimes', () => {
   it(`calls the given function the given number of times`, () => {
-    const emptyFunc = jest.fn(function() {});
+    const return5 = function() {
+      return 5;
+    }
+
+    const mockFunc = jest.fn(return5);
     
-    callXTimes(emptyFunc, 0);
-    expect(emptyFunc.mock.calls.length).toEqual(0);
+    callXTimes(mockFunc, 0);
+    expect(mockFunc.mock.calls.length).toEqual(0);
 
-    callXTimes(emptyFunc, 5);
-    expect(emptyFunc.mock.calls.length).toEqual(5);
+    callXTimes(mockFunc, 5);
+    expect(mockFunc.mock.calls.length).toEqual(5);
 
-    callXTimes(emptyFunc, 50);
-    expect(emptyFunc.mock.calls.length).toEqual(55);
+    callXTimes(mockFunc, 50);
+    expect(mockFunc.mock.calls.length).toEqual(55);
   })
 });
 
